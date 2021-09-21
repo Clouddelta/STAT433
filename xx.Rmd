@@ -1,0 +1,27 @@
+---
+title: "Untitled"
+author: "Jingyun Jia"
+date: "Sept 20, 2021"
+output: github_document
+---
+
+```{r test, warning=FALSE}
+library(stringr)
+library(xml2)
+library(XML)
+library(RCurl)
+library(rvest)
+library(dplyr)
+faculty_inf=data.frame()
+web=read_html("https://guide.wisc.edu/faculty/")
+l=3789## the amount of faculty
+name=web%>%html_nodes(xpath="//ul[@class='uw-people']/li/p/text()[1]")%>%html_text()
+position=web%>%html_nodes(xpath="//ul[@class='uw-people']/li/p/text()[2]")%>%html_text()
+major=web%>%html_nodes(xpath="//ul[@class='uw-people']/li/p/text()[3]")%>%html_text()
+degree=html_node(html_nodes(web,xpath="//*[@id='textcontainer']/ul/li/p"),xpath='text()[4]')%>%html_text()##to add missing value as NA, or the length of this vector will be 3736.
+info=cbind(name,position,major,degree)
+head(info)
+```
+
+
+
