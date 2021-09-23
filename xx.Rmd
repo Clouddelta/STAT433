@@ -2,9 +2,7 @@
 title: "Week 2"
 author: "Jingyun Jia"
 date: "Sept 20, 2021"
-output: 
-  html_document:
-    keep_md: true
+output: github_document
 ---
 # Faculty data
 ## 4 Steps
