@@ -1,17 +1,25 @@
 ---
-title: "Untitled"
+title: "Week 2"
 author: "Jingyun Jia"
 date: "Sept 20, 2021"
-output: github_document
+output: html_document
 ---
+# Faculty data
+## 4 Steps
+### 1.Web Crawler  
+### 2.write.csv
+### 3.str(info) and head(info)
+### 4.make a barplot about the distribution of first letter in their names
 
-```{r test, warning=FALSE}
+```{r}
+options(knitr.duplicate.label = 'allow')
 library(stringr)
 library(xml2)
 library(XML)
 library(RCurl)
 library(rvest)
 library(dplyr)
+library(ggplot2)
 faculty_inf=data.frame()
 web=read_html("https://guide.wisc.edu/faculty/")
 l=3789## the amount of faculty
@@ -19,9 +27,10 @@ name=web%>%html_nodes(xpath="//ul[@class='uw-people']/li/p/text()[1]")%>%html_te
 position=web%>%html_nodes(xpath="//ul[@class='uw-people']/li/p/text()[2]")%>%html_text()
 major=web%>%html_nodes(xpath="//ul[@class='uw-people']/li/p/text()[3]")%>%html_text()
 degree=html_node(html_nodes(web,xpath="//*[@id='textcontainer']/ul/li/p"),xpath='text()[4]')%>%html_text()##to add missing value as NA, or the length of this vector will be 3736.
-info=cbind(name,position,major,degree)
+info=data.frame(cbind(name,position,major,degree))
+#write.csv(info,'xx.csv')
 head(info)
+str(info)
+summaryofname=table(substring(info$name,1,1))
+barplot(summaryofname,main="Summary of Name",xlab="letters",ylab="Frequency",horiz=1,cex.axis=1.5)
 ```
-
-
-
