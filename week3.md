@@ -82,8 +82,7 @@ flights%>%mutate(realday=(month-1)*30+day)%>%
   ggplot(aes(x=por_delay,y=ave_delay))+geom_point()
 ```
 
-![](week3_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
-
+![unnamed-chunk-1-1](C:\Users\jia\Desktop\433\STAT433\week3_files\figure-gfm\unnamed-chunk-1-1.png)
 ``` r
 ##from the plot,there is a positive correlation between 
 ##      the portion of canceled and the average delay
