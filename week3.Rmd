@@ -1,0 +1,35 @@
+---
+title: "week3"
+author: "Jingyun Jia"
+date: "2021/9/28"
+output: github_document
+---
+github link:  <https://github.com/Clouddelta/STAT433/blob/main/week3.md>
+```{r}
+library(dplyr)
+library(nycflights13)
+library(ggplot2)
+#1
+flights$dep_time%>%is.na%>%sum
+#8255 items in dep_time are missing
+flights%>%is.na%>%apply(MARGIN=2,FUN=sum)  
+##dep_time,dep_delay,arr_time,arr_delay,tailnum,air_time are missing
+##The reason may be that flights were canceled
+
+#2
+flights%>%mutate(newdep_time=dep_time%/%100*60+dep_time%%100,
+                 newsched_dep_time=sched_dep_time%/%100*60+sched_dep_time%%10)
+#make a transformation:n=n%/%100*60+n%%100
+#for example:if dep_time=517,then new_dep_time=5*60+17(mins)
+
+#3
+#use missing value of dep_time as a criterion for the number of canceled flights
+#first, we need to create a new column for each day the formula is:
+##                ((month-1)*30+day,  since the year is all 2013)
+flights%>%mutate(realday=(month-1)*30+day)%>%
+  group_by(realday)%>%
+  summarise(por_delay=sum(is.na(dep_time))/length(dep_time),ave_delay=mean(dep_delay,na.rm=1))%>%
+  ggplot(aes(x=por_delay,y=ave_delay))+geom_point()
+##from the plot,there is a positive correlation between 
+##      the portion of canceled and the average delay
+```

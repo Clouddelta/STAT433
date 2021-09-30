@@ -2,7 +2,7 @@
 title: "Week 2"
 author: "Jingyun Jia"
 date: "Sept 20, 2021"
-output: github_document
+output: html_document
 ---
 # Faculty data
 ## 4 Steps
@@ -10,7 +10,7 @@ output: github_document
 ### 2.write.csv
 ### 3.str(info) and head(info)
 ### 4.make a barplot about the distribution of first letter in their names
-
+link to github<https://github.com/Clouddelta/STAT433/blob/main/xx.md>
 ```{r}
 options(knitr.duplicate.label = 'allow')
 library(stringr)
