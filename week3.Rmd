@@ -2,7 +2,7 @@
 title: "week3"
 author: "Jingyun Jia"
 date: "2021/9/28"
-output: github_document
+output: html_document
 ---
 github link:  <https://github.com/Clouddelta/STAT433/blob/main/week3.md>
 ```{r}
