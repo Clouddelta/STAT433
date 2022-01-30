@@ -2,8 +2,10 @@
 title: "What time of day should you fly if you want to avoid delays as much as possible?"
 author: "Jingyun Jia"
 date: "2021/10/5"
-output: github_document
+output: html_document
 ---
+github link:  <https://github.com/Clouddelta/STAT433/blob/main/week4.md>
+
 # 1.Conclusion
 1. Autumn is the best season to fly in 2013.
 2. I recommend to fly before 10am in each season.
